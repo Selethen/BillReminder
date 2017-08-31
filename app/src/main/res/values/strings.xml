@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Bill Reminder</string>
+    <string name="moje_rachunki">Moje rachunki</string>
+    <string name="historia">Historia</string>
+</resources>
