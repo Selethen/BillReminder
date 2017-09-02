@@ -24,6 +24,14 @@ public class MenuFragment extends Fragment {
             }
         });
 
+        Button buttonHistory = (Button) view.findViewById(R.id.history);
+        buttonHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.content_main, new HistoryFragment()).addToBackStack("HistoryFragment").commit();
+            }
+        });
+
         return view;
     }
 }
