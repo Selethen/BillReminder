@@ -1,6 +1,8 @@
 package com.example.selethen.billreminder;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -17,6 +19,8 @@ import java.util.Calendar;
 
 public class AddingScreenFragment extends Fragment {
     View view;
+
+    public static String fileName = "mydata";
     private DatePickerDialog.OnDateSetListener dateSetListener;
     //TO BE DELETED
     private TextView testTextView;
@@ -60,6 +64,8 @@ public class AddingScreenFragment extends Fragment {
                 //TO BE DELETED
             }
         };
+        SharedPreferences dataToSave = getActivity().getPreferences(Context.MODE_PRIVATE);
+
         return view;
     }
 
