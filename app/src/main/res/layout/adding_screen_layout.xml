@@ -34,4 +34,32 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTitle" />
 
+    <Button
+        android:id="@+id/datePickerButton"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="-387dp"
+        android:text="Ustaw datę"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDescription"
+        app:layout_constraintHorizontal_bias="0.0" />
+
+    <!--TO BE DELETED-->
+    <TextView
+        android:id="@+id/testTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="testTextView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/datePickerButton"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" />
+    <!--TO BE DELETED-->
+
 </android.support.constraint.ConstraintLayout>
