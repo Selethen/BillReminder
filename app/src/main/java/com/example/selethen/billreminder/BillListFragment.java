@@ -1,5 +1,7 @@
 package com.example.selethen.billreminder;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -10,8 +12,13 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class BillListFragment extends Fragment {
     View view;
@@ -24,15 +31,7 @@ public class BillListFragment extends Fragment {
         ListView list = (ListView) view.findViewById(R.id.list);
         ArrayList<Bill> billArrayList = new ArrayList<>();
 
-
-        try {
-            billArrayList.add(new Bill("memy", "potrzebuje duzo memow ale opisu i tak narazie nie widac", 700.00d, "20-04-1889"));
-            billArrayList.add(new Bill("sdgf", "sdgf", 70420.00d, "20-03-1999"));
-            billArrayList.add(new Bill("sdgfsdgfsdgf", "g", 7.00d, "27-07-1999"));
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        billArrayList.addAll(loadBillsList());
 
         BillListAdapter adapter = new BillListAdapter(getContext(), billArrayList);
         list.setAdapter(adapter);
@@ -48,10 +47,25 @@ public class BillListFragment extends Fragment {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+                sharedPreferences.edit().putInt("chosenBill", position).apply();
+                getFragmentManager().beginTransaction().replace(R.id.content_main, new BillDetailsFragment()).addToBackStack("BillDetailsFragment").commit();
             }
         });
 
         return view;
+    }
+
+    private List<Bill> loadBillsList(){
+        SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        List<Bill> bills = new ArrayList<>();
+
+        String json = sharedPreferences.getString("bills", "");
+        if(json.equals("")) return bills;
+        Type type = new TypeToken<List<Bill>>(){}.getType();
+        bills = gson.fromJson(json, type);
+
+        return bills;
     }
 }

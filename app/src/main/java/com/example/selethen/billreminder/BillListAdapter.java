@@ -43,17 +43,10 @@ public class BillListAdapter extends BaseAdapter {
         TextView textViewDate = (TextView) view.findViewById(R.id.textViewDate);
         TextView textViewPrice = (TextView) view.findViewById(R.id.textViewPrice);
 
-        Date date = billArrayList.get(position).getDate();
-
-        textViewDate.setText(dateToString(date));
+        textViewDate.setText(billArrayList.get(position).getDate());
         textViewTitle.setText(billArrayList.get(position).getTitle());
         textViewPrice.setText(String.valueOf(billArrayList.get(position).getPrice())+" zł");
 
         return view;
-    }
-
-    private String dateToString(Date date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        return sdf.format(date);
     }
 }

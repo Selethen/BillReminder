@@ -2,12 +2,11 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/editTextPrice"
+        android:id="@+id/bill_price"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
@@ -15,13 +14,13 @@
         android:layout_marginTop="18dp"
         android:ems="10"
         android:hint="Kwota"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datePickerButton" />
+        app:layout_constraintTop_toBottomOf="@+id/bill_date_picker" />
 
     <EditText
-        android:id="@+id/editTextTitle"
+        android:id="@+id/bill_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
@@ -36,45 +35,33 @@
         app:layout_constraintHorizontal_bias="0.0" />
 
     <EditText
-        android:id="@+id/editTextDescription"
+        android:id="@+id/bill_description"
         android:layout_width="0dp"
         android:layout_height="148dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="13dp"
         android:ems="10"
         android:hint="Opis"
+        android:maxLines="8"
         android:inputType="textMultiLine"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/bill_name"
+        app:layout_constraintHorizontal_bias="1.0" />
 
     <Button
-        android:id="@+id/datePickerButton"
+        android:id="@+id/bill_date_picker"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="18dp"
         android:text="Ustaw datę"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDescription"
-        app:layout_constraintHorizontal_bias="0.0" />
-
-    <!--TO BE DELETED-->
-    <TextView
-        android:id="@+id/testTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:text="testTextView"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp" />
+        app:layout_constraintTop_toBottomOf="@+id/bill_description"
+        app:layout_constraintHorizontal_bias="1.0" />
 
     <Button
         android:id="@+id/acceptButton"
@@ -93,12 +80,10 @@
         android:background="@android:color/holo_red_light"
         android:text="Anuluj"
         android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPrice"
+        app:layout_constraintTop_toBottomOf="@+id/bill_price"
         android:layout_marginLeft="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="16dp" />
-
-    <!--TO BE DELETED-->
 
 </android.support.constraint.ConstraintLayout>

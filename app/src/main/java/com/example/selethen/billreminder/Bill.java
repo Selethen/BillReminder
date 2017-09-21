@@ -17,8 +17,9 @@ public class Bill {
         this.date = stringToDate(date);
     }
 
-    public Date getDate() {
-        return date;
+    public String getDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        return sdf.format(date);
     }
 
     public double getPrice() {
