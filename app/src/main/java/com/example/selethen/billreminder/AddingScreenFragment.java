@@ -43,6 +43,8 @@ public class AddingScreenFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.adding_screen_layout, container, false);
 
+        getActivity().setTitle("Dodaj nowy rachunek");
+
         date = "";
         final EditText billName = (EditText) view.findViewById(R.id.bill_name);
         final EditText billDescription = (EditText) view.findViewById(R.id.bill_description);
@@ -96,7 +98,7 @@ public class AddingScreenFragment extends Fragment {
             }
         });
 
-        Button datePickerButton = (Button) view.findViewById(R.id.bill_date_picker);
+        final Button datePickerButton = (Button) view.findViewById(R.id.bill_date_picker);
         datePickerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,6 +122,7 @@ public class AddingScreenFragment extends Fragment {
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 month += 1;
                 date = addZero(dayOfMonth) + "-" + addZero(month) + "-" + year;
+                datePickerButton.setText(date);
             }
         };
 

@@ -28,6 +28,8 @@ public class BillListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         this.view = inflater.inflate(R.layout.bill_list_layout, container, false);
 
+        getActivity().setTitle("Twoje rachunki");
+
         ListView list = (ListView) view.findViewById(R.id.list);
         ArrayList<Bill> billArrayList = new ArrayList<>();
 

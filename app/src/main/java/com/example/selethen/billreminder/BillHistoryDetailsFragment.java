@@ -19,13 +19,13 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BillDetailsFragment extends Fragment{
+public class BillHistoryDetailsFragment extends Fragment{
     View view;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        this.view = inflater.inflate(R.layout.bill_details_layout, container, false);
+        this.view = inflater.inflate(R.layout.bill_history_details_layout, container, false);
 
         getActivity().setTitle("Szczegóły");
 
@@ -63,15 +63,6 @@ public class BillDetailsFragment extends Fragment{
             }
         });
 
-        final Button payButton = (Button) view.findViewById(R.id.bill_details_pay);
-        payButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                payBill();
-                getFragmentManager().popBackStack();
-            }
-        });
-
         return view;
     }
 
@@ -83,60 +74,25 @@ public class BillDetailsFragment extends Fragment{
 
             Gson gson = new Gson();
 
-            String json = sharedPreferences.getString("bills", "");
+            String json = sharedPreferences.getString("billsHistory", "");
             Type type = new TypeToken<List<Bill>>(){}.getType();
             if(json.equals("")) return;
             List<Bill> bills = gson.fromJson(json, type);
 
             bills.remove(pos);
 
-            editor.putString("bills", gson.toJson(bills));
+            editor.putString("billsHistory", gson.toJson(bills));
 
             editor.apply();
         }
     }
 
-    private void payBill(){
-        SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
-        int pos = sharedPreferences.getInt("chosenBill", -1);
-        if(pos != -1) {
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-
-            Gson gson = new Gson();
-
-            String json = sharedPreferences.getString("bills", "");
-            String jsonHistory = sharedPreferences.getString("billsHistory", "");
-
-            List<Bill> billsHistory;
-
-            Type type = new TypeToken<List<Bill>>(){}.getType();
-
-            if(jsonHistory.equals("")){
-                billsHistory = new ArrayList<>();
-            }
-            else {
-                billsHistory = gson.fromJson(jsonHistory, type);
-            }
-
-            if(json.equals("")) return;
-
-            List<Bill> bills = gson.fromJson(json, type);
-
-            billsHistory.add(bills.get(pos));
-            bills.remove(pos);
-
-            editor.putString("bills", gson.toJson(bills));
-            editor.putString("billsHistory", gson.toJson(billsHistory));
-
-            editor.apply();
-        }
-    }
 
     private Bill loadBill(){
         SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
         Gson gson = new Gson();
 
-        String json = sharedPreferences.getString("bills", "");
+        String json = sharedPreferences.getString("billsHistory", "");
         if(json.equals("")) return null;
         Type type = new TypeToken<List<Bill>>(){}.getType();
         List<Bill> bills = gson.fromJson(json, type);

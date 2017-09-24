@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@color/backgroundColor"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/bill_details_price"
+        android:layout_width="360dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Kwota"
+        android:inputType="numberDecimal"
+        android:textColor="@color/lighterButtonColor"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/bill_details_date"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.0" />
+
+    <TextView
+        android:id="@+id/bill_details_name"
+        android:layout_width="354dp"
+        android:layout_height="49dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Nazwa"
+        android:inputType="textPersonName"
+        android:textColor="@color/buttonColor"
+        android:textSize="30sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/bill_details_description"
+        android:layout_width="0dp"
+        android:layout_height="148dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Opis"
+        android:inputType="textMultiLine"
+        android:maxLines="8"
+        android:textColor="@color/lighterButtonColor"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/bill_details_name"
+        android:layout_marginRight="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/bill_details_date"
+        android:layout_width="359dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:text="Ustaw datę"
+        android:textColor="@color/buttonColor"
+        android:textSize="30sp"
+        app:layout_constraintTop_toBottomOf="@+id/bill_details_description"
+        android:layout_marginRight="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.0" />
+
+    <Button
+        android:id="@+id/bill_details_back"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:background="@color/buttonColor"
+        android:text="Cofnij"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <Button
+        android:id="@+id/bill_details_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:background="@color/buttonColor"
+        android:text="Usuń"
+        app:layout_constraintBaseline_toBaselineOf="@+id/bill_details_back"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

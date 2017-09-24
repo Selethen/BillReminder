@@ -16,6 +16,8 @@ public class MenuFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.menu_layout, container, false);
 
+        getActivity().setTitle("Bill Reminder");
+
         Button buttonBills = (Button) view.findViewById(R.id.bills);
         buttonBills.setOnClickListener(new View.OnClickListener() {
             @Override

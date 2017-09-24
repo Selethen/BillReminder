@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
@@ -25,6 +26,8 @@ public class HistoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         this.view = inflater.inflate(R.layout.history_layout, container, false);
 
+        getActivity().setTitle("Historia");
+
         ListView historyListView = (ListView) view.findViewById(R.id.history_list_view);
         ArrayList<Bill> billArrayList = new ArrayList<>();
 
@@ -32,6 +35,15 @@ public class HistoryFragment extends Fragment {
 
         BillListAdapter adapter = new BillListAdapter(getContext(), billArrayList);
         historyListView.setAdapter(adapter);
+
+        historyListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+                sharedPreferences.edit().putInt("chosenBill", i).apply();
+                getFragmentManager().beginTransaction().replace(R.id.content_main, new BillHistoryDetailsFragment()).addToBackStack("BillHistoryDetailsFragment").commit();
+            }
+        });
 
         return view;
     }
