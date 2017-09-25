@@ -43,7 +43,7 @@ public class BillHistoryListAdapter extends BaseAdapter {
         TextView textViewDate = (TextView) view.findViewById(R.id.textViewDate);
         TextView textViewPrice = (TextView) view.findViewById(R.id.textViewPrice);
 
-        textViewDate.setText(billArrayList.get(position).getDate());
+        textViewDate.setText(billArrayList.get(position).getStringDate());
         textViewTitle.setText(billArrayList.get(position).getTitle());
         textViewPrice.setText(String.valueOf(billArrayList.get(position).getPrice())+" zł");
 

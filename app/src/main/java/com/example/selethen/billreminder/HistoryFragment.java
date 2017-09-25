@@ -16,6 +16,8 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class HistoryFragment extends Fragment {
@@ -50,6 +52,7 @@ public class HistoryFragment extends Fragment {
 
     private List<Bill> loadBillsListHistory(){
         SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
         List<Bill> bills = new ArrayList<>();
 
@@ -57,6 +60,19 @@ public class HistoryFragment extends Fragment {
         if(json.equals("")) return bills;
         Type type = new TypeToken<List<Bill>>(){}.getType();
         bills = gson.fromJson(json, type);
+
+        Collections.sort(bills, new Comparator<Bill>() {
+            @Override
+            public int compare(Bill o1, Bill o2) {
+                return o1.getDate().compareTo(o2.getDate());
+            }
+        });
+
+        editor.putString("billsHistory", gson.toJson(bills));
+        //put our obj to our base
+
+        editor.apply();
+        //apply changes
 
         return bills;
     }

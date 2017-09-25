@@ -30,7 +30,7 @@ public class BillHistoryDetailsFragment extends Fragment{
         getActivity().setTitle("Szczegóły");
 
         TextView billName = (TextView) view.findViewById(R.id.bill_details_name);
-        TextView billDescription = (TextView) view.findViewById(R.id.bill_details_description);
+        TextView billDescription = (TextView) view.findViewById(R.id.bill_details_description_text);
         TextView billPrice = (TextView) view.findViewById(R.id.bill_details_price);
         TextView billDate = (TextView) view.findViewById(R.id.bill_details_date);
 
@@ -44,7 +44,7 @@ public class BillHistoryDetailsFragment extends Fragment{
         billName.setText(bill.getTitle());
         billDescription.setText(bill.getDescription());
         billPrice.setText(String.valueOf(bill.getPrice()) + " zł");
-        billDate.setText(bill.getDate());
+        billDate.setText(bill.getStringDate());
 
         Button backButton = (Button) view.findViewById(R.id.bill_details_back);
         backButton.setOnClickListener(new View.OnClickListener() {
